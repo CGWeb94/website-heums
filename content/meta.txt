@@ -1,0 +1,6 @@
+# Auto-generated – update when known
+Domain:         heums.de
+GitHub-Repo:    github.com/CGWeb94/website-heums
+Vercel-Projekt: website-heums
+Canonical-URL:  https://heums.de
+Vercel-URL:     https://website-heums.vercel.app
