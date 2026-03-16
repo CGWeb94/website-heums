@@ -539,62 +539,129 @@
       .nd-card { padding: 26px 18px; }
       .ct-form-wrap { padding: 26px 18px; }
     }
-  /* === STYLE SWITCHER === */
-  #sw-toggle {
-    position: fixed; bottom: 28px; right: 28px; z-index: 9000;
-    width: 48px; height: 48px; border-radius: 50%;
-    background: var(--accent); color: #fff; border: none;
-    cursor: pointer; font-size: 20px;
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 0 3px rgba(255,255,255,0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  #sw-toggle:hover { transform: scale(1.08); box-shadow: 0 6px 26px rgba(0,0,0,0.5); }
-  #sw-toggle:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
-  #sw-toggle.open { transform: rotate(90deg) scale(1.05); }
+  /* === DESIGN SWITCHER (temporär – zum Testen) === */
+  #ts-wrap { position:fixed; bottom:24px; right:24px; z-index:9999; font-family:'Inter',sans-serif; }
 
-  #sw-panel {
-    position: fixed; bottom: 88px; right: 28px; z-index: 9000;
-    background: #0e1e2f; border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 18px; padding: 22px 20px;
-    width: 300px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 4px 16px rgba(0,0,0,0.4);
-    transform-origin: bottom right;
-    transform: scale(0.88) translateY(8px); opacity: 0; pointer-events: none;
-    transition: transform 0.22s cubic-bezier(.34,1.56,.64,1), opacity 0.18s ease;
+  #ts-btn {
+    width:46px; height:46px; border-radius:50%; border:none; cursor:pointer;
+    background:#1a2d42; color:#fff; font-size:20px;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 18px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.08);
+    transition:transform .2s cubic-bezier(.34,1.56,.64,1), box-shadow .2s ease;
   }
-  #sw-panel.open { transform: scale(1) translateY(0); opacity: 1; pointer-events: auto; }
+  #ts-btn:hover { transform:scale(1.1); box-shadow:0 6px 24px rgba(0,0,0,0.6); }
+  #ts-btn:focus-visible { outline:2px solid #fff; outline-offset:3px; }
+  #ts-btn.open { transform:rotate(15deg) scale(1.05); }
 
-  .sw-section-title {
-    font-size: 10px; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.1em; color: #5a7a96; margin-bottom: 12px; margin-top: 4px;
+  #ts-panel {
+    position:absolute; bottom:58px; right:0;
+    width:340px; background:#0d1a26;
+    border:1px solid rgba(255,255,255,0.1); border-radius:18px;
+    box-shadow:0 24px 64px rgba(0,0,0,0.7), 0 4px 16px rgba(0,0,0,0.4);
+    transform-origin:bottom right;
+    transform:scale(.9) translateY(6px); opacity:0; pointer-events:none;
+    transition:transform .22s cubic-bezier(.34,1.56,.64,1), opacity .18s ease;
+    overflow:hidden;
   }
-  .sw-colors {
-    display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;
-  }
-  .sw-color {
-    width: 30px; height: 30px; border-radius: 50%; border: 2px solid transparent;
-    cursor: pointer; transition: transform 0.15s ease, border-color 0.15s ease;
-    flex-shrink: 0;
-  }
-  .sw-color:hover { transform: scale(1.15); }
-  .sw-color:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
-  .sw-color.active { border-color: #fff; box-shadow: 0 0 0 2px rgba(255,255,255,0.25); }
+  #ts-panel.open { transform:scale(1) translateY(0); opacity:1; pointer-events:auto; }
 
-  .sw-divider { height: 1px; background: rgba(255,255,255,0.07); margin-bottom: 16px; }
-
-  .sw-fonts { display: flex; flex-direction: column; gap: 5px; }
-  .sw-font {
-    padding: 9px 12px; border-radius: 9px; cursor: pointer;
-    border: 1px solid transparent;
-    transition: background 0.15s ease, border-color 0.15s ease;
-    display: flex; justify-content: space-between; align-items: center;
+  /* Tabs */
+  .ts-tabs { display:flex; border-bottom:1px solid rgba(255,255,255,0.07); }
+  .ts-tab {
+    flex:1; padding:12px 0; background:none; border:none; cursor:pointer;
+    font-size:12px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+    color:rgba(255,255,255,0.35);
+    transition:color .2s ease, box-shadow .2s ease;
   }
-  .sw-font:hover { background: rgba(255,255,255,0.06); }
-  .sw-font.active { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.15); }
-  .sw-font:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-  .sw-font-name { font-size: 14px; color: #e0dcd4; }
-  .sw-font-sample { font-size: 12px; color: #4d6a82; font-style: italic; }
+  .ts-tab:hover { color:rgba(255,255,255,0.7); }
+  .ts-tab.active { color:#fff; box-shadow:inset 0 -2px 0 #e07832; }
+  .ts-tab:focus-visible { outline:2px solid #e07832; outline-offset:-2px; }
+
+  /* Panel body */
+  .ts-body { padding:18px 16px 20px; overflow-y:auto; max-height:480px; }
+  .ts-pane { display:none; }
+  .ts-pane.active { display:block; }
+
+  /* Section label */
+  .ts-lbl {
+    font-size:10px; font-weight:700; text-transform:uppercase;
+    letter-spacing:.1em; color:rgba(255,255,255,0.28);
+    margin-bottom:10px; margin-top:16px;
+  }
+  .ts-lbl:first-child { margin-top:0; }
+
+  /* Theme swatches grid */
+  .ts-themes { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+  .ts-swatch {
+    border:none; cursor:pointer; border-radius:10px; overflow:hidden;
+    position:relative; aspect-ratio:4/3; padding:0;
+    box-shadow:0 2px 8px rgba(0,0,0,0.35);
+    outline:2px solid transparent; outline-offset:2px;
+    transition:transform .15s ease, outline-color .15s ease;
+  }
+  .ts-swatch:hover { transform:scale(1.06); }
+  .ts-swatch:focus-visible { outline-color:#fff; }
+  .ts-swatch.active { outline-color:#fff; box-shadow:0 0 0 3px rgba(255,255,255,0.25), 0 4px 12px rgba(0,0,0,0.5); }
+  .ts-swatch-bg { position:absolute; inset:0; }
+  .ts-swatch-accent { position:absolute; bottom:0; left:0; right:0; height:28%; }
+  .ts-swatch-lbl {
+    position:absolute; top:5px; left:0; right:0; text-align:center;
+    font-size:9px; font-weight:600; letter-spacing:.04em;
+    color:rgba(255,255,255,0.8); text-shadow:0 1px 3px rgba(0,0,0,0.6);
+    line-height:1.2;
+  }
+  .ts-swatch-check {
+    position:absolute; top:4px; right:5px; width:14px; height:14px;
+    border-radius:50%; background:#fff; display:none;
+    align-items:center; justify-content:center; font-size:8px;
+  }
+  .ts-swatch.active .ts-swatch-check { display:flex; }
+
+  /* Custom pickers */
+  .ts-pickers { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:4px; }
+  .ts-pick-wrap {
+    background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);
+    border-radius:10px; padding:10px 12px;
+    display:flex; flex-direction:column; gap:6px;
+  }
+  .ts-pick-lbl { font-size:10px; font-weight:600; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:.06em; }
+  .ts-pick-row { display:flex; align-items:center; gap:8px; }
+  .ts-pick-swatch {
+    width:28px; height:28px; border-radius:6px; flex-shrink:0;
+    border:1px solid rgba(255,255,255,0.15); cursor:pointer; overflow:hidden; padding:0;
+  }
+  .ts-pick-swatch input[type=color] {
+    width:200%; height:200%; margin:-50%; border:none; cursor:pointer;
+    background:none; padding:0; outline:none; opacity:0; position:absolute;
+  }
+  .ts-pick-swatch { position:relative; }
+  .ts-pick-hex {
+    flex:1; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
+    border-radius:6px; padding:5px 8px; font-size:12px; font-family:'Inter',monospace;
+    color:#e0dcd4; outline:none; width:0;
+    transition:border-color .15s ease;
+  }
+  .ts-pick-hex:focus { border-color:rgba(255,255,255,0.3); }
+
+  /* Font list */
+  .ts-fonts { display:flex; flex-direction:column; gap:4px; }
+  .ts-font {
+    background:none; border:1px solid transparent; border-radius:10px; cursor:pointer;
+    padding:10px 12px; text-align:left;
+    display:flex; align-items:center; justify-content:space-between;
+    transition:background .15s ease, border-color .15s ease;
+  }
+  .ts-font:hover { background:rgba(255,255,255,0.05); }
+  .ts-font.active { background:rgba(255,255,255,0.07); border-color:rgba(255,255,255,0.14); }
+  .ts-font:focus-visible { outline:2px solid rgba(255,255,255,0.4); outline-offset:2px; }
+  .ts-font-left { display:flex; flex-direction:column; gap:2px; }
+  .ts-font-name { font-size:13px; font-weight:500; color:#e0dcd4; line-height:1; }
+  .ts-font-meta { font-size:10px; color:rgba(255,255,255,0.28); }
+  .ts-font-preview { font-size:15px; color:rgba(255,255,255,0.5); font-style:italic; }
+  .ts-font-badge {
+    font-size:9px; background:rgba(224,120,50,0.25); color:#e07832;
+    padding:2px 6px; border-radius:4px; font-weight:600;
+  }
   </style>
 </head>
 <body>
@@ -1245,128 +1312,258 @@ ScrollTrigger.create({
 });
 </script>
 
-<!-- ===================== STYLE SWITCHER ===================== -->
-<button id="sw-toggle" aria-label="Design-Optionen öffnen" aria-expanded="false" aria-controls="sw-panel">
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-    <circle cx="12" cy="12" r="3"/><path d="M19.07 4.93A10 10 0 1 1 4.93 19.07M19.07 4.93l-2.12 2.12"/>
-    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
-  </svg>
-</button>
+<!-- DESIGN SWITCHER (temporär – zum Testen) -->
+<div id="ts-wrap">
+  <button id="ts-btn" aria-label="Design-Optionen" aria-expanded="false" aria-controls="ts-panel">🎨</button>
 
-<div id="sw-panel" role="dialog" aria-label="Design-Einstellungen">
-  <div class="sw-section-title">Akzentfarbe</div>
-  <div class="sw-colors" role="radiogroup" aria-label="Farbschema wählen">
-    <button class="sw-color active" style="background:#e07832" data-accent="#e07832" data-accent-l="#f08c46" title="Orange (Standard)" role="radio" aria-checked="true" aria-label="Orange"></button>
-    <button class="sw-color" style="background:#0d9488" data-accent="#0d9488" data-accent-l="#14b8a6" title="Teal" role="radio" aria-checked="false" aria-label="Teal"></button>
-    <button class="sw-color" style="background:#7c3aed" data-accent="#7c3aed" data-accent-l="#8b5cf6" title="Violett" role="radio" aria-checked="false" aria-label="Violett"></button>
-    <button class="sw-color" style="background:#dc2626" data-accent="#dc2626" data-accent-l="#ef4444" title="Rot" role="radio" aria-checked="false" aria-label="Rot"></button>
-    <button class="sw-color" style="background:#059669" data-accent="#059669" data-accent-l="#10b981" title="Grün" role="radio" aria-checked="false" aria-label="Grün"></button>
-    <button class="sw-color" style="background:#0284c7" data-accent="#0284c7" data-accent-l="#0ea5e9" title="Blau" role="radio" aria-checked="false" aria-label="Blau"></button>
-    <button class="sw-color" style="background:#ca8a04" data-accent="#ca8a04" data-accent-l="#eab308" title="Gold" role="radio" aria-checked="false" aria-label="Gold"></button>
-    <button class="sw-color" style="background:#e11d48" data-accent="#e11d48" data-accent-l="#f43f5e" title="Rosé" role="radio" aria-checked="false" aria-label="Rosé"></button>
-  </div>
-  <div class="sw-divider"></div>
-  <div class="sw-section-title">Schrift</div>
-  <div class="sw-fonts" role="radiogroup" aria-label="Schriftart wählen">
-    <button class="sw-font active" data-head="'Playfair Display', serif" data-body="'Inter', sans-serif" role="radio" aria-checked="true">
-      <span class="sw-font-name" style="font-family:'Inter',sans-serif">Inter</span>
-      <span class="sw-font-sample" style="font-family:'Playfair Display',serif">Haustechnik</span>
-    </button>
-    <button class="sw-font" data-head="'Playfair Display', serif" data-body="'Poppins', sans-serif" role="radio" aria-checked="false">
-      <span class="sw-font-name" style="font-family:'Poppins',sans-serif">Poppins</span>
-      <span class="sw-font-sample" style="font-family:'Playfair Display',serif">Haustechnik</span>
-    </button>
-    <button class="sw-font" data-head="'Fraunces', serif" data-body="'DM Sans', sans-serif" role="radio" aria-checked="false">
-      <span class="sw-font-name" style="font-family:'DM Sans',sans-serif">DM Sans</span>
-      <span class="sw-font-sample" style="font-family:'Fraunces',serif">Haustechnik</span>
-    </button>
-    <button class="sw-font" data-head="'Cormorant Garamond', serif" data-body="'Plus Jakarta Sans', sans-serif" role="radio" aria-checked="false">
-      <span class="sw-font-name" style="font-family:'Plus Jakarta Sans',sans-serif">Plus Jakarta</span>
-      <span class="sw-font-sample" style="font-family:'Cormorant Garamond',serif">Haustechnik</span>
-    </button>
-    <button class="sw-font" data-head="'Libre Baskerville', serif" data-body="'Nunito', sans-serif" role="radio" aria-checked="false">
-      <span class="sw-font-name" style="font-family:'Nunito',sans-serif">Nunito</span>
-      <span class="sw-font-sample" style="font-family:'Libre Baskerville',serif">Haustechnik</span>
-    </button>
-    <button class="sw-font" data-head="'Merriweather', serif" data-body="'Raleway', sans-serif" role="radio" aria-checked="false">
-      <span class="sw-font-name" style="font-family:'Raleway',sans-serif">Raleway</span>
-      <span class="sw-font-sample" style="font-family:'Merriweather',serif">Haustechnik</span>
-    </button>
-    <button class="sw-font" data-head="'EB Garamond', serif" data-body="'Outfit', sans-serif" role="radio" aria-checked="false">
-      <span class="sw-font-name" style="font-family:'Outfit',sans-serif">Outfit</span>
-      <span class="sw-font-sample" style="font-family:'EB Garamond',serif">Haustechnik</span>
-    </button>
-    <button class="sw-font" data-head="'Bodoni Moda', serif" data-body="'Manrope', sans-serif" role="radio" aria-checked="false">
-      <span class="sw-font-name" style="font-family:'Manrope',sans-serif">Manrope</span>
-      <span class="sw-font-sample" style="font-family:'Bodoni Moda',serif">Haustechnik</span>
-    </button>
-    <button class="sw-font" data-head="'Lora', serif" data-body="'Source Sans 3', sans-serif" role="radio" aria-checked="false">
-      <span class="sw-font-name" style="font-family:'Source Sans 3',sans-serif">Source Sans</span>
-      <span class="sw-font-sample" style="font-family:'Lora',serif">Haustechnik</span>
-    </button>
-    <button class="sw-font" data-head="'Spectral', serif" data-body="'Lato', sans-serif" role="radio" aria-checked="false">
-      <span class="sw-font-name" style="font-family:'Lato',sans-serif">Lato</span>
-      <span class="sw-font-sample" style="font-family:'Spectral',serif">Haustechnik</span>
-    </button>
+  <div id="ts-panel" role="dialog" aria-label="Design-Einstellungen">
+    <!-- Tabs -->
+    <div class="ts-tabs" role="tablist">
+      <button class="ts-tab active" role="tab" aria-selected="true"  id="tab-farben"    aria-controls="pane-farben"    onclick="tsTab('farben')">Farben</button>
+      <button class="ts-tab"        role="tab" aria-selected="false" id="tab-schriften" aria-controls="pane-schriften" onclick="tsTab('schriften')">Schriften</button>
+    </div>
+
+    <div class="ts-body">
+      <!-- FARBEN PANE -->
+      <div class="ts-pane active" id="pane-farben" role="tabpanel" aria-labelledby="tab-farben">
+        <div class="ts-lbl">Farbthema</div>
+        <div class="ts-themes" id="ts-themes"></div>
+
+        <div class="ts-lbl">Eigene Farben</div>
+        <div class="ts-pickers">
+          <div class="ts-pick-wrap">
+            <div class="ts-pick-lbl">Akzentfarbe</div>
+            <div class="ts-pick-row">
+              <button class="ts-pick-swatch" id="swatch-accent" title="Farbwähler öffnen">
+                <input type="color" id="ts-pick-accent" value="#e07832" aria-label="Akzentfarbe wählen">
+              </button>
+              <input class="ts-pick-hex" id="hex-accent" type="text" value="#e07832" maxlength="7" spellcheck="false" aria-label="Akzentfarbe Hex-Wert">
+            </div>
+          </div>
+          <div class="ts-pick-wrap">
+            <div class="ts-pick-lbl">Hintergrund</div>
+            <div class="ts-pick-row">
+              <button class="ts-pick-swatch" id="swatch-bg" title="Farbwähler öffnen">
+                <input type="color" id="ts-pick-bg" value="#0b1825" aria-label="Hintergrundfarbe wählen">
+              </button>
+              <input class="ts-pick-hex" id="hex-bg" type="text" value="#0b1825" maxlength="7" spellcheck="false" aria-label="Hintergrund Hex-Wert">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCHRIFTEN PANE -->
+      <div class="ts-pane" id="pane-schriften" role="tabpanel" aria-labelledby="tab-schriften">
+        <div class="ts-lbl">Schriftpaar wählen</div>
+        <div class="ts-fonts" id="ts-fonts"></div>
+      </div>
+    </div>
   </div>
 </div>
 
 <script>
-// ===================== STYLE SWITCHER =====================
-const swToggle = document.getElementById('sw-toggle');
-const swPanel  = document.getElementById('sw-panel');
+// ===================== DESIGN SWITCHER =====================
 
-swToggle.addEventListener('click', () => {
-  const open = swPanel.classList.toggle('open');
-  swToggle.classList.toggle('open', open);
-  swToggle.setAttribute('aria-expanded', String(open));
+// --- Helper functions ---
+function hexToRgb(hex) {
+  hex = hex.replace(/^#/,'');
+  if (hex.length === 3) hex = hex.split('').map(c=>c+c).join('');
+  return [parseInt(hex.slice(0,2),16), parseInt(hex.slice(2,4),16), parseInt(hex.slice(4,6),16)];
+}
+function rgbToHex(r,g,b) {
+  return '#' + [r,g,b].map(v=>Math.max(0,Math.min(255,v)).toString(16).padStart(2,'0')).join('');
+}
+function lighten(hex, amt) {
+  const [r,g,b] = hexToRgb(hex);
+  return rgbToHex(Math.round(r+(255-r)*amt), Math.round(g+(255-g)*amt), Math.round(b+(255-b)*amt));
+}
+function darken(hex, amt) {
+  const [r,g,b] = hexToRgb(hex);
+  return rgbToHex(Math.round(r*(1-amt)), Math.round(g*(1-amt)), Math.round(b*(1-amt)));
+}
+
+// --- Theme data (12 themes, Handwerk / Haustechnik) ---
+const TS_THEMES = [
+  { id:'navy-orange',   name:'Deep Navy',     bg:'#0b1825', surface:'#111f2d', surfaceEl:'#172840', border:'rgba(255,255,255,0.07)', accent:'#e07832', text:'#edeae2', muted:'#8099b0', subtle:'#4d6a82' },
+  { id:'slate-amber',   name:'Schieferblau',  bg:'#0f1729', surface:'#16203a', surfaceEl:'#1e2d4d', border:'rgba(255,255,255,0.07)', accent:'#f59e0b', text:'#e8e4f0', muted:'#8892b0', subtle:'#4a5a80' },
+  { id:'forest-green',  name:'Waldgrün',      bg:'#0a1a0f', surface:'#111f16', surfaceEl:'#162b1d', border:'rgba(255,255,255,0.07)', accent:'#22c55e', text:'#e8f5e9', muted:'#7aaa80', subtle:'#3d6645' },
+  { id:'warm-copper',   name:'Kupfer',        bg:'#1a1008', surface:'#221508', surfaceEl:'#2c1e0a', border:'rgba(255,255,255,0.07)', accent:'#c97c3a', text:'#f5ebe0', muted:'#9a8070', subtle:'#6a5545' },
+  { id:'charcoal-red',  name:'Anthrazit',     bg:'#111111', surface:'#1a1a1a', surfaceEl:'#242424', border:'rgba(255,255,255,0.08)', accent:'#e63946', text:'#f0f0f0', muted:'#888888', subtle:'#555555' },
+  { id:'terracotta',    name:'Terrakotta',    bg:'#1a0e0a', surface:'#231510', surfaceEl:'#2d1c14', border:'rgba(255,255,255,0.07)', accent:'#e07060', text:'#f5ece8', muted:'#a08070', subtle:'#705848' },
+  { id:'steel-blue',    name:'Stahlblau',     bg:'#0a1520', surface:'#10202e', surfaceEl:'#162a3c', border:'rgba(255,255,255,0.08)', accent:'#38bdf8', text:'#e0f0f8', muted:'#6090b0', subtle:'#305868' },
+  { id:'sand-light',    name:'Sand (hell)',   bg:'#f5f0e8', surface:'#ede5d8', surfaceEl:'#e4d9c8', border:'rgba(0,0,0,0.08)',       accent:'#1e3a5f', text:'#1a2535', muted:'#5a6a7a', subtle:'#8a9aa8' },
+  { id:'midnight-blue', name:'Mitternacht',   bg:'#080d1a', surface:'#0d1528', surfaceEl:'#111d35', border:'rgba(255,255,255,0.06)', accent:'#3b82f6', text:'#e8edff', muted:'#7090c0', subtle:'#3d5a8a' },
+  { id:'signal-red',    name:'Signalrot',     bg:'#0e1520', surface:'#141d2d', surfaceEl:'#1a2540', border:'rgba(255,255,255,0.07)', accent:'#dc2626', text:'#f0eee8', muted:'#8098b0', subtle:'#4d6280' },
+  { id:'olive-gold',    name:'Oliv',          bg:'#141208', surface:'#1c1a0e', surfaceEl:'#242215', border:'rgba(255,255,255,0.07)', accent:'#d4a227', text:'#f0edda', muted:'#909060', subtle:'#606040' },
+  { id:'warm-grey',     name:'Warmgrau',      bg:'#16141a', surface:'#201e26', surfaceEl:'#282634', border:'rgba(255,255,255,0.07)', accent:'#f0a444', text:'#ede8e0', muted:'#888898', subtle:'#5a5870' },
+];
+
+// --- Font data (10 pairs) ---
+const TS_FONTS = [
+  { id:'inter',         body:"'Inter',sans-serif",            head:"'Playfair Display',serif",    bodyName:'Inter',          headName:'Playfair Display', tag:'Standard' },
+  { id:'poppins',       body:"'Poppins',sans-serif",          head:"'Playfair Display',serif",    bodyName:'Poppins',        headName:'Playfair Display', tag:'Beliebt' },
+  { id:'dm-sans',       body:"'DM Sans',sans-serif",          head:"'Fraunces',serif",            bodyName:'DM Sans',        headName:'Fraunces',         tag:'' },
+  { id:'jakarta',       body:"'Plus Jakarta Sans',sans-serif",head:"'Cormorant Garamond',serif",  bodyName:'Plus Jakarta',   headName:'Cormorant',        tag:'' },
+  { id:'nunito',        body:"'Nunito',sans-serif",           head:"'Libre Baskerville',serif",   bodyName:'Nunito',         headName:'Libre Baskerville',tag:'' },
+  { id:'raleway',       body:"'Raleway',sans-serif",          head:"'Merriweather',serif",        bodyName:'Raleway',        headName:'Merriweather',     tag:'' },
+  { id:'outfit',        body:"'Outfit',sans-serif",           head:"'EB Garamond',serif",         bodyName:'Outfit',         headName:'EB Garamond',      tag:'' },
+  { id:'manrope',       body:"'Manrope',sans-serif",          head:"'Bodoni Moda',serif",         bodyName:'Manrope',        headName:'Bodoni Moda',      tag:'' },
+  { id:'source-sans',   body:"'Source Sans 3',sans-serif",    head:"'Lora',serif",                bodyName:'Source Sans 3',  headName:'Lora',             tag:'' },
+  { id:'lato',          body:"'Lato',sans-serif",             head:"'Spectral',serif",            bodyName:'Lato',           headName:'Spectral',         tag:'' },
+];
+
+let tsActiveTheme = 'navy-orange';
+let tsActiveFont  = 'inter';
+
+// --- Apply theme ---
+function applyTheme(t, skipSwatchUpdate) {
+  const root = document.documentElement;
+  const accentL   = lighten(t.accent, 0.18);
+  const accentDim = `rgba(${hexToRgb(t.accent).join(',')},0.12)`;
+  const [ar,ag,ab] = hexToRgb(t.accent);
+
+  root.style.setProperty('--bg',           t.bg);
+  root.style.setProperty('--surface',      t.surface);
+  root.style.setProperty('--surface-el',   t.surfaceEl);
+  root.style.setProperty('--border',       t.border);
+  root.style.setProperty('--accent',       t.accent);
+  root.style.setProperty('--accent-l',     accentL);
+  root.style.setProperty('--accent-dim',   accentDim);
+  root.style.setProperty('--text',         t.text);
+  root.style.setProperty('--muted',        t.muted);
+  root.style.setProperty('--subtle',       t.subtle);
+  // Derived vars
+  root.style.setProperty('--c-primary-rgb',   `${ar},${ag},${ab}`);
+  root.style.setProperty('--c-primary-light', lighten(t.accent, 0.3));
+  root.style.setProperty('--c-primary-d1',    darken(t.accent, 0.15));
+  root.style.setProperty('--c-primary-d2',    darken(t.accent, 0.32));
+
+  tsActiveTheme = t.id;
+  if (!skipSwatchUpdate) {
+    document.querySelectorAll('.ts-swatch').forEach(s => s.classList.toggle('active', s.dataset.id === t.id));
+    // Sync pickers
+    try {
+      const bgHex = t.bg.startsWith('rgba') ? '#0b1825' : t.bg;
+      document.getElementById('ts-pick-accent').value = t.accent;
+      document.getElementById('ts-pick-bg').value     = bgHex;
+      document.getElementById('hex-accent').value     = t.accent;
+      document.getElementById('hex-bg').value         = bgHex;
+      document.getElementById('swatch-accent').style.background = t.accent;
+      document.getElementById('swatch-bg').style.background     = bgHex;
+    } catch(e) {}
+  }
+}
+
+// --- Apply font ---
+function applyFont(f) {
+  document.body.style.fontFamily = f.body;
+  let el = document.getElementById('ts-font-style');
+  if (!el) { el = document.createElement('style'); el.id = 'ts-font-style'; document.head.appendChild(el); }
+  el.textContent = `h1,h2,h3,h4,.nav-logo,.ft-logo,.form-head,.hero-title,.sec-title,.about-title,.svc-title,.ct-title,.nd-title{font-family:${f.head}!important;}`;
+  tsActiveFont = f.id;
+  document.querySelectorAll('.ts-font').forEach(b => b.classList.toggle('active', b.dataset.id === f.id));
+}
+
+// --- Render swatches ---
+function renderThemes() {
+  const grid = document.getElementById('ts-themes');
+  TS_THEMES.forEach(t => {
+    const btn = document.createElement('button');
+    btn.className = 'ts-swatch' + (t.id === tsActiveTheme ? ' active' : '');
+    btn.dataset.id = t.id;
+    btn.title = t.name;
+    btn.setAttribute('aria-label', t.name);
+    btn.innerHTML = `
+      <div class="ts-swatch-bg"  style="background:${t.bg}"></div>
+      <div class="ts-swatch-accent" style="background:${t.accent}"></div>
+      <div class="ts-swatch-lbl">${t.name}</div>
+      <div class="ts-swatch-check">✓</div>`;
+    btn.addEventListener('click', () => applyTheme(t));
+    grid.appendChild(btn);
+  });
+}
+
+// --- Render fonts ---
+function renderFonts() {
+  const list = document.getElementById('ts-fonts');
+  TS_FONTS.forEach(f => {
+    const btn = document.createElement('button');
+    btn.className = 'ts-font' + (f.id === tsActiveFont ? ' active' : '');
+    btn.dataset.id = f.id;
+    btn.innerHTML = `
+      <div class="ts-font-left">
+        <span class="ts-font-name" style="font-family:${f.body}">${f.bodyName}${f.tag ? ` <span class="ts-font-badge">${f.tag}</span>` : ''}</span>
+        <span class="ts-font-meta">${f.headName}</span>
+      </div>
+      <span class="ts-font-preview" style="font-family:${f.head}">Aa</span>`;
+    btn.addEventListener('click', () => applyFont(f));
+    list.appendChild(btn);
+  });
+}
+
+// --- Custom pickers ---
+function initPickers() {
+  const pickAccent = document.getElementById('ts-pick-accent');
+  const pickBg     = document.getElementById('ts-pick-bg');
+  const hexAccent  = document.getElementById('hex-accent');
+  const hexBg      = document.getElementById('hex-bg');
+  const swA = document.getElementById('swatch-accent');
+  const swB = document.getElementById('swatch-bg');
+
+  function applyCustomAccent(hex) {
+    if (!/^#[0-9a-f]{6}$/i.test(hex)) return;
+    const fakeTheme = { ...TS_THEMES.find(t=>t.id===tsActiveTheme), accent: hex, id: 'custom' };
+    applyTheme(fakeTheme, true);
+    swA.style.background = hex;
+  }
+  function applyCustomBg(hex) {
+    if (!/^#[0-9a-f]{6}$/i.test(hex)) return;
+    const current = TS_THEMES.find(t=>t.id===tsActiveTheme) || TS_THEMES[0];
+    // Derive surface/surfaceEl from bg
+    const fakeTheme = { ...current, bg: hex, surface: lighten(hex, 0.06), surfaceEl: lighten(hex, 0.12), id: 'custom' };
+    applyTheme(fakeTheme, true);
+    swB.style.background = hex;
+  }
+
+  pickAccent.addEventListener('input',  e => { hexAccent.value = e.target.value; applyCustomAccent(e.target.value); });
+  hexAccent.addEventListener('input',   e => { const v = e.target.value; pickAccent.value = v.length===7 ? v : pickAccent.value; applyCustomAccent(v); });
+  pickBg.addEventListener('input',      e => { hexBg.value = e.target.value; applyCustomBg(e.target.value); });
+  hexBg.addEventListener('input',       e => { const v = e.target.value; pickBg.value = v.length===7 ? v : pickBg.value; applyCustomBg(v); });
+
+  // Init swatch background colors
+  swA.style.background = pickAccent.value;
+  swB.style.background = pickBg.value;
+}
+
+// --- Tabs ---
+function tsTab(name) {
+  document.querySelectorAll('.ts-tab').forEach(t => { t.classList.toggle('active', t.id === 'tab-'+name); t.setAttribute('aria-selected', t.id === 'tab-'+name); });
+  document.querySelectorAll('.ts-pane').forEach(p => p.classList.toggle('active', p.id === 'pane-'+name));
+}
+
+// --- Toggle panel ---
+const tsBtn   = document.getElementById('ts-btn');
+const tsPanel = document.getElementById('ts-panel');
+
+tsBtn.addEventListener('click', () => {
+  const open = tsPanel.classList.toggle('open');
+  tsBtn.classList.toggle('open', open);
+  tsBtn.setAttribute('aria-expanded', String(open));
 });
 
-// Close on outside click
 document.addEventListener('click', e => {
-  if (!swToggle.contains(e.target) && !swPanel.contains(e.target)) {
-    swPanel.classList.remove('open');
-    swToggle.classList.remove('open');
-    swToggle.setAttribute('aria-expanded', 'false');
+  if (!tsBtn.contains(e.target) && !tsPanel.contains(e.target)) {
+    tsPanel.classList.remove('open');
+    tsBtn.classList.remove('open');
+    tsBtn.setAttribute('aria-expanded','false');
   }
 });
+document.addEventListener('keydown', e => { if (e.key==='Escape') { tsPanel.classList.remove('open'); tsBtn.classList.remove('open'); tsBtn.setAttribute('aria-expanded','false'); } });
 
-// Color swatches
-document.querySelectorAll('.sw-color').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.sw-color').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-checked','false'); });
-    btn.classList.add('active');
-    btn.setAttribute('aria-checked','true');
-    const root = document.documentElement;
-    root.style.setProperty('--accent',   btn.dataset.accent);
-    root.style.setProperty('--accent-l', btn.dataset.accentL);
-    root.style.setProperty('--accent-dim', hexToRgba(btn.dataset.accent, 0.12));
-  });
-});
-
-// Font buttons
-document.querySelectorAll('.sw-font').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.sw-font').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-checked','false'); });
-    btn.classList.add('active');
-    btn.setAttribute('aria-checked','true');
-    // Apply heading font via CSS on h1,h2,h3,h4 elements
-    const headFont = btn.dataset.head;
-    const bodyFont = btn.dataset.body;
-    document.body.style.fontFamily = bodyFont;
-    // Update heading font via a dynamic style tag
-    let styleTag = document.getElementById('sw-font-override');
-    if (!styleTag) { styleTag = document.createElement('style'); styleTag.id = 'sw-font-override'; document.head.appendChild(styleTag); }
-    styleTag.textContent = `h1,h2,h3,h4,.nav-logo,.ft-logo,.form-head { font-family: ${headFont} !important; }`;
-  });
-});
-
-function hexToRgba(hex, alpha) {
-  const r = parseInt(hex.slice(1,3),16);
-  const g = parseInt(hex.slice(3,5),16);
-  const b = parseInt(hex.slice(5,7),16);
-  return `rgba(${r},${g},${b},${alpha})`;
-}
+// --- Init ---
+renderThemes();
+renderFonts();
+initPickers();
 </script>
 </body>
 </html>
