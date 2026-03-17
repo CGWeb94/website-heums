@@ -22,19 +22,20 @@
   <style>
     /* === VARIABLES === */
     :root {
-      --bg:               #0b1825;
-      --surface:          #111f2d;
-      --surface-el:       #172840;
-      --border:           rgba(255,255,255,0.07);
-      --accent:           #e07832;
-      --accent-l:         #f08c46;
-      --accent-dim:       rgba(224,120,50,0.12);
-      --text:             #edeae2;
-      --muted:            #8099b0;
-      --subtle:           #4d6a82;
+      --bg:               #ffffff;
+      --surface:          #f4f7fb;
+      --surface-el:       #e6eef8;
+      --border:           rgba(0,0,0,0.09);
+      --accent:           #1e3a5f;
+      --accent-l:         #2a4d7a;
+      --accent-dim:       rgba(30,58,95,0.10);
+      --text:             #1a2535;
+      --muted:            #5a6a7a;
+      --subtle:           #8a9aaa;
       --r-sm: 8px;  --r-md: 14px;  --r-lg: 22px;  --r-xl: 32px;
-      --nav-scrolled-bg: rgba(11,24,37,0.92);
-      --noise-opacity: 0.5;
+      --nav-scrolled-bg:  rgba(255,255,255,0.95);
+      --noise-opacity:    0.15;
+      --c-primary-rgb:    30,58,95;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -70,7 +71,7 @@
     .badge {
       display: inline-flex; align-items: center; gap: 7px;
       padding: 5px 14px;
-      border: 1px solid rgba(224,120,50,0.4);
+      border: 1px solid rgba(var(--c-primary-rgb),0.4);
       border-radius: 100px;
       font-size: 11px; font-weight: 600;
       letter-spacing: 0.1em; text-transform: uppercase;
@@ -94,11 +95,11 @@
 
     .btn-primary {
       background: var(--accent); color: #fff;
-      box-shadow: 0 4px 20px rgba(224,120,50,0.35), 0 1px 4px rgba(224,120,50,0.2);
+      box-shadow: 0 4px 20px rgba(var(--c-primary-rgb),0.35), 0 1px 4px rgba(var(--c-primary-rgb),0.2);
     }
     .btn-primary:hover {
       background: var(--accent-l);
-      box-shadow: 0 8px 28px rgba(224,120,50,0.45), 0 2px 8px rgba(224,120,50,0.25);
+      box-shadow: 0 8px 28px rgba(var(--c-primary-rgb),0.45), 0 2px 8px rgba(var(--c-primary-rgb),0.25);
     }
     .btn-outline {
       background: transparent; color: var(--text);
@@ -188,7 +189,7 @@
     .hero-glow-1 {
       position: absolute; top: -150px; right: -80px;
       width: 680px; height: 680px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(224,120,50,0.1) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(var(--c-primary-rgb),0.1) 0%, transparent 70%);
       pointer-events: none;
     }
     .hero-glow-2 {
@@ -245,7 +246,7 @@
     }
     .float-icon {
       width: 42px; height: 42px; border-radius: var(--r-sm);
-      background: var(--accent-dim); border: 1px solid rgba(224,120,50,0.2);
+      background: var(--accent-dim); border: 1px solid rgba(var(--c-primary-rgb),0.2);
       display: flex; align-items: center; justify-content: center;
       font-size: 20px; flex-shrink: 0;
     }
@@ -318,7 +319,7 @@
     .svc-list li::before {
       content: ''; width: 18px; height: 18px; flex-shrink: 0;
       border-radius: 50%; background: var(--accent-dim);
-      border: 1px solid rgba(224,120,50,0.4);
+      border: 1px solid rgba(var(--c-primary-rgb),0.4);
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e07832' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
       background-size: 11px; background-position: center; background-repeat: no-repeat;
     }
@@ -333,7 +334,7 @@
     #about::before {
       content: ''; position: absolute; top: 0; right: 0;
       width: 60%; height: 100%;
-      background: radial-gradient(ellipse at top right, rgba(224,120,50,0.05) 0%, transparent 65%);
+      background: radial-gradient(ellipse at top right, rgba(var(--c-primary-rgb),0.05) 0%, transparent 65%);
       pointer-events: none;
     }
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
@@ -359,7 +360,7 @@
       border-radius: var(--r-md); padding: 18px;
       transition: border-color 0.2s ease;
     }
-    .val-card:hover { border-color: rgba(224,120,50,0.28); }
+    .val-card:hover { border-color: rgba(var(--c-primary-rgb),0.28); }
     .val-icon { font-size: 20px; margin-bottom: 8px; }
     .val-name { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
     .val-desc { font-size: 12px; color: var(--subtle); line-height: 1.55; }
@@ -399,14 +400,14 @@
       border-radius: var(--r-xl); padding: 26px; flex-shrink: 0;
       transition: border-color 0.2s ease;
     }
-    .testi-card:hover { border-color: rgba(224,120,50,0.22); }
+    .testi-card:hover { border-color: rgba(var(--c-primary-rgb),0.22); }
     .testi-stars { display: flex; gap: 3px; margin-bottom: 12px; }
     .testi-stars span { color: var(--accent); font-size: 13px; }
     .testi-text { font-size: 13px; color: var(--muted); line-height: 1.75; margin-bottom: 18px; font-style: italic; }
     .testi-author { display: flex; align-items: center; gap: 10px; }
     .testi-av {
       width: 34px; height: 34px; border-radius: 50%;
-      background: var(--accent-dim); border: 1px solid rgba(224,120,50,0.35);
+      background: var(--accent-dim); border: 1px solid rgba(var(--c-primary-rgb),0.35);
       display: flex; align-items: center; justify-content: center;
       font-family: 'Playfair Display', serif; font-size: 13px;
       font-weight: 700; color: var(--accent); flex-shrink: 0;
@@ -417,8 +418,8 @@
     /* === NOTDIENST BANNER === */
     #notdienst { padding: 80px 0; }
     .nd-card {
-      background: linear-gradient(135deg, var(--surface-el) 0%, rgba(224,120,50,0.08) 100%);
-      border: 1px solid rgba(224,120,50,0.22);
+      background: linear-gradient(135deg, var(--surface-el) 0%, rgba(var(--c-primary-rgb),0.08) 100%);
+      border: 1px solid rgba(var(--c-primary-rgb),0.22);
       border-radius: var(--r-xl); padding: 52px 60px;
       display: grid; grid-template-columns: 1fr auto;
       gap: 40px; align-items: center; position: relative; overflow: hidden;
@@ -426,12 +427,12 @@
     .nd-card::before {
       content: ''; position: absolute; top: -60px; right: -60px;
       width: 280px; height: 280px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(224,120,50,0.14) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(var(--c-primary-rgb),0.14) 0%, transparent 70%);
       pointer-events: none;
     }
     .nd-badge {
       display: inline-flex; align-items: center; gap: 7px; padding: 5px 12px;
-      background: rgba(224,120,50,0.12); border: 1px solid rgba(224,120,50,0.38);
+      background: rgba(var(--c-primary-rgb),0.12); border: 1px solid rgba(var(--c-primary-rgb),0.38);
       border-radius: 100px; font-size: 10px; font-weight: 700;
       color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 18px;
     }
@@ -482,7 +483,7 @@
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
     .fg input:focus, .fg select:focus, .fg textarea:focus {
-      border-color: var(--accent); box-shadow: 0 0 0 3px rgba(224,120,50,0.1);
+      border-color: var(--accent); box-shadow: 0 0 0 3px rgba(var(--c-primary-rgb),0.1);
     }
     .fg input::placeholder, .fg textarea::placeholder { color: var(--subtle); }
     .fg textarea { resize: vertical; min-height: 96px; }
@@ -541,129 +542,6 @@
       .nd-card { padding: 26px 18px; }
       .ct-form-wrap { padding: 26px 18px; }
     }
-  /* === DESIGN SWITCHER (temporär – zum Testen) === */
-  #ts-wrap { position:fixed; bottom:24px; right:24px; z-index:9999; font-family:'Poppins',sans-serif; }
-
-  #ts-btn {
-    width:46px; height:46px; border-radius:50%; border:none; cursor:pointer;
-    background:#1a2d42; color:#fff; font-size:20px;
-    display:flex; align-items:center; justify-content:center;
-    box-shadow:0 4px 18px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.08);
-    transition:transform .2s cubic-bezier(.34,1.56,.64,1), box-shadow .2s ease;
-  }
-  #ts-btn:hover { transform:scale(1.1); box-shadow:0 6px 24px rgba(0,0,0,0.6); }
-  #ts-btn:focus-visible { outline:2px solid #fff; outline-offset:3px; }
-  #ts-btn.open { transform:rotate(15deg) scale(1.05); }
-
-  #ts-panel {
-    position:absolute; bottom:58px; right:0;
-    width:340px; background:#0d1a26;
-    border:1px solid rgba(255,255,255,0.1); border-radius:18px;
-    box-shadow:0 24px 64px rgba(0,0,0,0.7), 0 4px 16px rgba(0,0,0,0.4);
-    transform-origin:bottom right;
-    transform:scale(.9) translateY(6px); opacity:0; pointer-events:none;
-    transition:transform .22s cubic-bezier(.34,1.56,.64,1), opacity .18s ease;
-    overflow:hidden;
-  }
-  #ts-panel.open { transform:scale(1) translateY(0); opacity:1; pointer-events:auto; }
-
-  /* Tabs */
-  .ts-tabs { display:flex; border-bottom:1px solid rgba(255,255,255,0.07); }
-  .ts-tab {
-    flex:1; padding:12px 0; background:none; border:none; cursor:pointer;
-    font-size:12px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
-    color:rgba(255,255,255,0.35);
-    transition:color .2s ease, box-shadow .2s ease;
-  }
-  .ts-tab:hover { color:rgba(255,255,255,0.7); }
-  .ts-tab.active { color:#fff; box-shadow:inset 0 -2px 0 #e07832; }
-  .ts-tab:focus-visible { outline:2px solid #e07832; outline-offset:-2px; }
-
-  /* Panel body */
-  .ts-body { padding:18px 16px 20px; overflow-y:auto; max-height:480px; }
-  .ts-pane { display:none; }
-  .ts-pane.active { display:block; }
-
-  /* Section label */
-  .ts-lbl {
-    font-size:10px; font-weight:700; text-transform:uppercase;
-    letter-spacing:.1em; color:rgba(255,255,255,0.28);
-    margin-bottom:10px; margin-top:16px;
-  }
-  .ts-lbl:first-child { margin-top:0; }
-
-  /* Theme swatches grid */
-  .ts-themes { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
-  .ts-swatch {
-    border:none; cursor:pointer; border-radius:10px; overflow:hidden;
-    position:relative; aspect-ratio:4/3; padding:0;
-    box-shadow:0 2px 8px rgba(0,0,0,0.35);
-    outline:2px solid transparent; outline-offset:2px;
-    transition:transform .15s ease, outline-color .15s ease;
-  }
-  .ts-swatch:hover { transform:scale(1.06); }
-  .ts-swatch:focus-visible { outline-color:#fff; }
-  .ts-swatch.active { outline-color:#fff; box-shadow:0 0 0 3px rgba(255,255,255,0.25), 0 4px 12px rgba(0,0,0,0.5); }
-  .ts-swatch-bg { position:absolute; inset:0; }
-  .ts-swatch-accent { position:absolute; bottom:0; left:0; right:0; height:28%; }
-  .ts-swatch-lbl {
-    position:absolute; top:5px; left:0; right:0; text-align:center;
-    font-size:9px; font-weight:600; letter-spacing:.04em;
-    color:rgba(255,255,255,0.8); text-shadow:0 1px 3px rgba(0,0,0,0.6);
-    line-height:1.2;
-  }
-  .ts-swatch-check {
-    position:absolute; top:4px; right:5px; width:14px; height:14px;
-    border-radius:50%; background:#fff; display:none;
-    align-items:center; justify-content:center; font-size:8px;
-  }
-  .ts-swatch.active .ts-swatch-check { display:flex; }
-
-  /* Custom pickers */
-  .ts-pickers { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:4px; }
-  .ts-pick-wrap {
-    background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);
-    border-radius:10px; padding:10px 12px;
-    display:flex; flex-direction:column; gap:6px;
-  }
-  .ts-pick-lbl { font-size:10px; font-weight:600; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:.06em; }
-  .ts-pick-row { display:flex; align-items:center; gap:8px; }
-  .ts-pick-swatch {
-    width:28px; height:28px; border-radius:6px; flex-shrink:0;
-    border:1px solid rgba(255,255,255,0.15); cursor:pointer; overflow:hidden; padding:0;
-  }
-  .ts-pick-swatch input[type=color] {
-    width:200%; height:200%; margin:-50%; border:none; cursor:pointer;
-    background:none; padding:0; outline:none; opacity:0; position:absolute;
-  }
-  .ts-pick-swatch { position:relative; }
-  .ts-pick-hex {
-    flex:1; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
-    border-radius:6px; padding:5px 8px; font-size:12px; font-family:'Inter',monospace;
-    color:#e0dcd4; outline:none; width:0;
-    transition:border-color .15s ease;
-  }
-  .ts-pick-hex:focus { border-color:rgba(255,255,255,0.3); }
-
-  /* Font list */
-  .ts-fonts { display:flex; flex-direction:column; gap:4px; }
-  .ts-font {
-    background:none; border:1px solid transparent; border-radius:10px; cursor:pointer;
-    padding:10px 12px; text-align:left;
-    display:flex; align-items:center; justify-content:space-between;
-    transition:background .15s ease, border-color .15s ease;
-  }
-  .ts-font:hover { background:rgba(255,255,255,0.05); }
-  .ts-font.active { background:rgba(255,255,255,0.07); border-color:rgba(255,255,255,0.14); }
-  .ts-font:focus-visible { outline:2px solid rgba(255,255,255,0.4); outline-offset:2px; }
-  .ts-font-left { display:flex; flex-direction:column; gap:2px; }
-  .ts-font-name { font-size:13px; font-weight:500; color:#e0dcd4; line-height:1; }
-  .ts-font-meta { font-size:10px; color:rgba(255,255,255,0.28); }
-  .ts-font-preview { font-size:15px; color:rgba(255,255,255,0.5); font-style:italic; }
-  .ts-font-badge {
-    font-size:9px; background:rgba(224,120,50,0.25); color:#e07832;
-    padding:2px 6px; border-radius:4px; font-weight:600;
-  }
   </style>
 </head>
 <body>
@@ -796,10 +674,6 @@
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2c0 6-6 6-6 12a6 6 0 0 0 12 0c0-6-6-6-6-12z"/></svg>
         Heizung & Bad
       </button>
-      <button class="svc-tab" role="tab" aria-selected="false" aria-controls="t-sicherheit" id="btn-sicherheit" onclick="switchTab('sicherheit')">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Sicherheit & Smart Home
-      </button>
     </div>
 
     <!-- Panels -->
@@ -849,27 +723,6 @@
         </div></div>
       </div>
 
-      <!-- Sicherheit -->
-      <div class="svc-panel" id="t-sicherheit" role="tabpanel" aria-labelledby="btn-sicherheit">
-        <div class="svc-content">
-          <span class="badge">Sicherheitstechnik</span>
-          <h3 class="svc-title">Sicherheitstechnik & Smart Home</h3>
-          <p class="svc-desc">Schützen Sie Ihr Zuhause mit modernster Technik. Von der Videoüberwachung bis zur vollständigen Smart-Home-Integration – wir installieren genau das, was Sie wirklich brauchen.</p>
-          <ul class="svc-list" aria-label="Leistungen Sicherheitstechnik">
-            <li>Videoüberwachung & Zugangssysteme</li>
-            <li>Brandmeldeanlagen</li>
-            <li>Blitzschutzanlagen</li>
-            <li>Smart Home & Gebäudeautomation</li>
-            <li>Türkommunikation & Gegensprechanlagen</li>
-            <li>Alarmanlagen & Einbruchschutz</li>
-          </ul>
-          <a href="#contact" class="btn btn-primary">Sicherheit anfragen</a>
-        </div>
-        <div><div class="svc-img-frame">
-          <img src="content/company_images/shutterstock_2627096853(1).jpg"
-               alt="Techniker bei Gebäude- und Klimatechnikinstallation" loading="lazy">
-        </div></div>
-      </div>
 
     </div>
   </div>
@@ -1181,7 +1034,6 @@
               <option>Elektrotechnik</option>
               <option>Heizung & Sanitär</option>
               <option>Badmodernisierung</option>
-              <option>Sicherheitstechnik</option>
               <option>Photovoltaik</option>
               <option>Notdienst</option>
               <option>Sonstiges</option>
@@ -1314,272 +1166,6 @@ ScrollTrigger.create({
 });
 </script>
 
-<!-- DESIGN SWITCHER (temporär – zum Testen) -->
-<div id="ts-wrap">
-  <button id="ts-btn" aria-label="Design-Optionen" aria-expanded="false" aria-controls="ts-panel">🎨</button>
 
-  <div id="ts-panel" role="dialog" aria-label="Design-Einstellungen">
-    <!-- Tabs -->
-    <div class="ts-tabs" role="tablist">
-      <button class="ts-tab active" role="tab" aria-selected="true"  id="tab-farben"    aria-controls="pane-farben"    onclick="tsTab('farben')">Farben</button>
-      <button class="ts-tab"        role="tab" aria-selected="false" id="tab-schriften" aria-controls="pane-schriften" onclick="tsTab('schriften')">Schriften</button>
-    </div>
-
-    <div class="ts-body">
-      <!-- FARBEN PANE -->
-      <div class="ts-pane active" id="pane-farben" role="tabpanel" aria-labelledby="tab-farben">
-        <div class="ts-lbl">Farbthema</div>
-        <div class="ts-themes" id="ts-themes"></div>
-
-        <div class="ts-lbl">Eigene Farben</div>
-        <div class="ts-pickers">
-          <div class="ts-pick-wrap">
-            <div class="ts-pick-lbl">Akzentfarbe</div>
-            <div class="ts-pick-row">
-              <button class="ts-pick-swatch" id="swatch-accent" title="Farbwähler öffnen">
-                <input type="color" id="ts-pick-accent" value="#e07832" aria-label="Akzentfarbe wählen">
-              </button>
-              <input class="ts-pick-hex" id="hex-accent" type="text" value="#e07832" maxlength="7" spellcheck="false" aria-label="Akzentfarbe Hex-Wert">
-            </div>
-          </div>
-          <div class="ts-pick-wrap">
-            <div class="ts-pick-lbl">Hintergrund</div>
-            <div class="ts-pick-row">
-              <button class="ts-pick-swatch" id="swatch-bg" title="Farbwähler öffnen">
-                <input type="color" id="ts-pick-bg" value="#0b1825" aria-label="Hintergrundfarbe wählen">
-              </button>
-              <input class="ts-pick-hex" id="hex-bg" type="text" value="#0b1825" maxlength="7" spellcheck="false" aria-label="Hintergrund Hex-Wert">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- SCHRIFTEN PANE -->
-      <div class="ts-pane" id="pane-schriften" role="tabpanel" aria-labelledby="tab-schriften">
-        <div class="ts-lbl">Schriftpaar wählen</div>
-        <div class="ts-fonts" id="ts-fonts"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-// ===================== DESIGN SWITCHER =====================
-
-// --- Helper functions ---
-function hexToRgb(hex) {
-  hex = hex.replace(/^#/,'');
-  if (hex.length === 3) hex = hex.split('').map(c=>c+c).join('');
-  return [parseInt(hex.slice(0,2),16), parseInt(hex.slice(2,4),16), parseInt(hex.slice(4,6),16)];
-}
-function rgbToHex(r,g,b) {
-  return '#' + [r,g,b].map(v=>Math.max(0,Math.min(255,v)).toString(16).padStart(2,'0')).join('');
-}
-function lighten(hex, amt) {
-  const [r,g,b] = hexToRgb(hex);
-  return rgbToHex(Math.round(r+(255-r)*amt), Math.round(g+(255-g)*amt), Math.round(b+(255-b)*amt));
-}
-function darken(hex, amt) {
-  const [r,g,b] = hexToRgb(hex);
-  return rgbToHex(Math.round(r*(1-amt)), Math.round(g*(1-amt)), Math.round(b*(1-amt)));
-}
-
-// --- Theme data (12 themes, Handwerk / Haustechnik) ---
-const TS_THEMES = [
-  { id:'navy-orange',   name:'Deep Navy',     bg:'#0b1825', surface:'#111f2d', surfaceEl:'#172840', border:'rgba(255,255,255,0.07)', accent:'#e07832', text:'#edeae2', muted:'#8099b0', subtle:'#4d6a82' },
-  { id:'slate-amber',   name:'Schieferblau',  bg:'#0f1729', surface:'#16203a', surfaceEl:'#1e2d4d', border:'rgba(255,255,255,0.07)', accent:'#f59e0b', text:'#e8e4f0', muted:'#8892b0', subtle:'#4a5a80' },
-  { id:'forest-green',  name:'Waldgrün',      bg:'#0a1a0f', surface:'#111f16', surfaceEl:'#162b1d', border:'rgba(255,255,255,0.07)', accent:'#22c55e', text:'#e8f5e9', muted:'#7aaa80', subtle:'#3d6645' },
-  { id:'warm-copper',   name:'Kupfer',        bg:'#1a1008', surface:'#221508', surfaceEl:'#2c1e0a', border:'rgba(255,255,255,0.07)', accent:'#c97c3a', text:'#f5ebe0', muted:'#9a8070', subtle:'#6a5545' },
-  { id:'charcoal-red',  name:'Anthrazit',     bg:'#111111', surface:'#1a1a1a', surfaceEl:'#242424', border:'rgba(255,255,255,0.08)', accent:'#e63946', text:'#f0f0f0', muted:'#888888', subtle:'#555555' },
-  { id:'terracotta',    name:'Terrakotta',    bg:'#1a0e0a', surface:'#231510', surfaceEl:'#2d1c14', border:'rgba(255,255,255,0.07)', accent:'#e07060', text:'#f5ece8', muted:'#a08070', subtle:'#705848' },
-  { id:'steel-blue',    name:'Stahlblau',     bg:'#0a1520', surface:'#10202e', surfaceEl:'#162a3c', border:'rgba(255,255,255,0.08)', accent:'#38bdf8', text:'#e0f0f8', muted:'#6090b0', subtle:'#305868' },
-  { id:'sand-light',    name:'Sand (hell)',   bg:'#f5f0e8', surface:'#ede5d8', surfaceEl:'#e4d9c8', border:'rgba(0,0,0,0.08)',       accent:'#1e3a5f', text:'#1a2535', muted:'#5a6a7a', subtle:'#8a9aa8' },
-  { id:'midnight-blue', name:'Mitternacht',   bg:'#080d1a', surface:'#0d1528', surfaceEl:'#111d35', border:'rgba(255,255,255,0.06)', accent:'#3b82f6', text:'#e8edff', muted:'#7090c0', subtle:'#3d5a8a' },
-  { id:'signal-red',    name:'Signalrot',     bg:'#0e1520', surface:'#141d2d', surfaceEl:'#1a2540', border:'rgba(255,255,255,0.07)', accent:'#dc2626', text:'#f0eee8', muted:'#8098b0', subtle:'#4d6280' },
-  { id:'olive-gold',    name:'Oliv',          bg:'#141208', surface:'#1c1a0e', surfaceEl:'#242215', border:'rgba(255,255,255,0.07)', accent:'#d4a227', text:'#f0edda', muted:'#909060', subtle:'#606040' },
-  { id:'warm-grey',     name:'Warmgrau',      bg:'#16141a', surface:'#201e26', surfaceEl:'#282634', border:'rgba(255,255,255,0.07)', accent:'#f0a444', text:'#ede8e0', muted:'#888898', subtle:'#5a5870' },
-  // — Helle Themes —
-  { id:'weiss-navy',    name:'Weiß + Navy',   bg:'#ffffff', surface:'#f4f7fb', surfaceEl:'#e6eef8', border:'rgba(0,0,0,0.09)',       accent:'#1e3a5f', text:'#1a2535', muted:'#5a6a7a', subtle:'#8a9aaa' },
-  { id:'eisblau',       name:'Eisblau',        bg:'#edf3fa', surface:'#dae8f5', surfaceEl:'#c6d8ed', border:'rgba(0,0,0,0.08)',       accent:'#1a5fa0', text:'#0d2540', muted:'#4a6880', subtle:'#7a9ab0' },
-  { id:'zement-blau',   name:'Zement + Blau', bg:'#f2f2f0', surface:'#e8e8e4', surfaceEl:'#dcdcd6', border:'rgba(0,0,0,0.09)',       accent:'#2c5282', text:'#1a1a1a', muted:'#606060', subtle:'#909090' },
-  { id:'weiss-orange',  name:'Weiß + Orange', bg:'#ffffff', surface:'#fdf6f0', surfaceEl:'#faeadb', border:'rgba(0,0,0,0.07)',       accent:'#e07832', text:'#1a1510', muted:'#6a5040', subtle:'#9a8070' },
-  { id:'silber-blau',   name:'Silber + Blau', bg:'#f0f4f8', surface:'#e2eaf4', surfaceEl:'#d2dfe9', border:'rgba(0,0,0,0.08)',       accent:'#3b6cb0', text:'#1a2535', muted:'#5a6a80', subtle:'#8a9ab0' },
-];
-
-// --- Font data (10 pairs) ---
-const TS_FONTS = [
-  { id:'poppins',       body:"'Poppins',sans-serif",          head:"'Playfair Display',serif",    bodyName:'Poppins',        headName:'Playfair Display', tag:'Standard' },
-  { id:'inter',         body:"'Inter',sans-serif",            head:"'Playfair Display',serif",    bodyName:'Inter',          headName:'Playfair Display', tag:'' },
-  { id:'dm-sans',       body:"'DM Sans',sans-serif",          head:"'Fraunces',serif",            bodyName:'DM Sans',        headName:'Fraunces',         tag:'' },
-  { id:'jakarta',       body:"'Plus Jakarta Sans',sans-serif",head:"'Cormorant Garamond',serif",  bodyName:'Plus Jakarta',   headName:'Cormorant',        tag:'' },
-  { id:'nunito',        body:"'Nunito',sans-serif",           head:"'Libre Baskerville',serif",   bodyName:'Nunito',         headName:'Libre Baskerville',tag:'' },
-  { id:'raleway',       body:"'Raleway',sans-serif",          head:"'Merriweather',serif",        bodyName:'Raleway',        headName:'Merriweather',     tag:'' },
-  { id:'outfit',        body:"'Outfit',sans-serif",           head:"'EB Garamond',serif",         bodyName:'Outfit',         headName:'EB Garamond',      tag:'' },
-  { id:'manrope',       body:"'Manrope',sans-serif",          head:"'Bodoni Moda',serif",         bodyName:'Manrope',        headName:'Bodoni Moda',      tag:'' },
-  { id:'source-sans',   body:"'Source Sans 3',sans-serif",    head:"'Lora',serif",                bodyName:'Source Sans 3',  headName:'Lora',             tag:'' },
-  { id:'lato',          body:"'Lato',sans-serif",             head:"'Spectral',serif",            bodyName:'Lato',           headName:'Spectral',         tag:'' },
-];
-
-let tsActiveTheme = 'navy-orange';
-let tsActiveFont  = 'poppins';
-
-// --- Apply theme ---
-function applyTheme(t, skipSwatchUpdate) {
-  const root = document.documentElement;
-  const accentL   = lighten(t.accent, 0.18);
-  const accentDim = `rgba(${hexToRgb(t.accent).join(',')},0.12)`;
-  const [ar,ag,ab] = hexToRgb(t.accent);
-
-  root.style.setProperty('--bg',           t.bg);
-  root.style.setProperty('--surface',      t.surface);
-  root.style.setProperty('--surface-el',   t.surfaceEl);
-  root.style.setProperty('--border',       t.border);
-  root.style.setProperty('--accent',       t.accent);
-  root.style.setProperty('--accent-l',     accentL);
-  root.style.setProperty('--accent-dim',   accentDim);
-  root.style.setProperty('--text',         t.text);
-  root.style.setProperty('--muted',        t.muted);
-  root.style.setProperty('--subtle',       t.subtle);
-  // Derived vars
-  root.style.setProperty('--c-primary-rgb',   `${ar},${ag},${ab}`);
-  root.style.setProperty('--c-primary-light', lighten(t.accent, 0.3));
-  root.style.setProperty('--c-primary-d1',    darken(t.accent, 0.15));
-  root.style.setProperty('--c-primary-d2',    darken(t.accent, 0.32));
-  // Nav + noise adapt to light/dark theme
-  const bgHex = t.bg.startsWith('rgba') ? '#0b1825' : t.bg;
-  const [bgr,bgg,bgb] = hexToRgb(bgHex);
-  const luminance = (0.299*bgr + 0.587*bgg + 0.114*bgb) / 255;
-  root.style.setProperty('--nav-scrolled-bg', `rgba(${bgr},${bgg},${bgb},0.93)`);
-  root.style.setProperty('--noise-opacity',   luminance > 0.65 ? '0.15' : '0.5');
-
-  tsActiveTheme = t.id;
-  if (!skipSwatchUpdate) {
-    document.querySelectorAll('.ts-swatch').forEach(s => s.classList.toggle('active', s.dataset.id === t.id));
-    // Sync pickers
-    try {
-      const bgHex = t.bg.startsWith('rgba') ? '#0b1825' : t.bg;
-      document.getElementById('ts-pick-accent').value = t.accent;
-      document.getElementById('ts-pick-bg').value     = bgHex;
-      document.getElementById('hex-accent').value     = t.accent;
-      document.getElementById('hex-bg').value         = bgHex;
-      document.getElementById('swatch-accent').style.background = t.accent;
-      document.getElementById('swatch-bg').style.background     = bgHex;
-    } catch(e) {}
-  }
-}
-
-// --- Apply font ---
-function applyFont(f) {
-  document.body.style.fontFamily = f.body;
-  let el = document.getElementById('ts-font-style');
-  if (!el) { el = document.createElement('style'); el.id = 'ts-font-style'; document.head.appendChild(el); }
-  el.textContent = `h1,h2,h3,h4,.nav-logo,.ft-logo,.form-head,.hero-title,.sec-title,.about-title,.svc-title,.ct-title,.nd-title{font-family:${f.head}!important;}`;
-  tsActiveFont = f.id;
-  document.querySelectorAll('.ts-font').forEach(b => b.classList.toggle('active', b.dataset.id === f.id));
-}
-
-// --- Render swatches ---
-function renderThemes() {
-  const grid = document.getElementById('ts-themes');
-  TS_THEMES.forEach(t => {
-    const btn = document.createElement('button');
-    btn.className = 'ts-swatch' + (t.id === tsActiveTheme ? ' active' : '');
-    btn.dataset.id = t.id;
-    btn.title = t.name;
-    btn.setAttribute('aria-label', t.name);
-    btn.innerHTML = `
-      <div class="ts-swatch-bg"  style="background:${t.bg}"></div>
-      <div class="ts-swatch-accent" style="background:${t.accent}"></div>
-      <div class="ts-swatch-lbl">${t.name}</div>
-      <div class="ts-swatch-check">✓</div>`;
-    btn.addEventListener('click', () => applyTheme(t));
-    grid.appendChild(btn);
-  });
-}
-
-// --- Render fonts ---
-function renderFonts() {
-  const list = document.getElementById('ts-fonts');
-  TS_FONTS.forEach(f => {
-    const btn = document.createElement('button');
-    btn.className = 'ts-font' + (f.id === tsActiveFont ? ' active' : '');
-    btn.dataset.id = f.id;
-    btn.innerHTML = `
-      <div class="ts-font-left">
-        <span class="ts-font-name" style="font-family:${f.body}">${f.bodyName}${f.tag ? ` <span class="ts-font-badge">${f.tag}</span>` : ''}</span>
-        <span class="ts-font-meta">${f.headName}</span>
-      </div>
-      <span class="ts-font-preview" style="font-family:${f.head}">Aa</span>`;
-    btn.addEventListener('click', () => applyFont(f));
-    list.appendChild(btn);
-  });
-}
-
-// --- Custom pickers ---
-function initPickers() {
-  const pickAccent = document.getElementById('ts-pick-accent');
-  const pickBg     = document.getElementById('ts-pick-bg');
-  const hexAccent  = document.getElementById('hex-accent');
-  const hexBg      = document.getElementById('hex-bg');
-  const swA = document.getElementById('swatch-accent');
-  const swB = document.getElementById('swatch-bg');
-
-  function applyCustomAccent(hex) {
-    if (!/^#[0-9a-f]{6}$/i.test(hex)) return;
-    const fakeTheme = { ...TS_THEMES.find(t=>t.id===tsActiveTheme), accent: hex, id: 'custom' };
-    applyTheme(fakeTheme, true);
-    swA.style.background = hex;
-  }
-  function applyCustomBg(hex) {
-    if (!/^#[0-9a-f]{6}$/i.test(hex)) return;
-    const current = TS_THEMES.find(t=>t.id===tsActiveTheme) || TS_THEMES[0];
-    // Derive surface/surfaceEl from bg
-    const fakeTheme = { ...current, bg: hex, surface: lighten(hex, 0.06), surfaceEl: lighten(hex, 0.12), id: 'custom' };
-    applyTheme(fakeTheme, true);
-    swB.style.background = hex;
-  }
-
-  pickAccent.addEventListener('input',  e => { hexAccent.value = e.target.value; applyCustomAccent(e.target.value); });
-  hexAccent.addEventListener('input',   e => { const v = e.target.value; pickAccent.value = v.length===7 ? v : pickAccent.value; applyCustomAccent(v); });
-  pickBg.addEventListener('input',      e => { hexBg.value = e.target.value; applyCustomBg(e.target.value); });
-  hexBg.addEventListener('input',       e => { const v = e.target.value; pickBg.value = v.length===7 ? v : pickBg.value; applyCustomBg(v); });
-
-  // Init swatch background colors
-  swA.style.background = pickAccent.value;
-  swB.style.background = pickBg.value;
-}
-
-// --- Tabs ---
-function tsTab(name) {
-  document.querySelectorAll('.ts-tab').forEach(t => { t.classList.toggle('active', t.id === 'tab-'+name); t.setAttribute('aria-selected', t.id === 'tab-'+name); });
-  document.querySelectorAll('.ts-pane').forEach(p => p.classList.toggle('active', p.id === 'pane-'+name));
-}
-
-// --- Toggle panel ---
-const tsBtn   = document.getElementById('ts-btn');
-const tsPanel = document.getElementById('ts-panel');
-
-tsBtn.addEventListener('click', () => {
-  const open = tsPanel.classList.toggle('open');
-  tsBtn.classList.toggle('open', open);
-  tsBtn.setAttribute('aria-expanded', String(open));
-});
-
-document.addEventListener('click', e => {
-  if (!tsBtn.contains(e.target) && !tsPanel.contains(e.target)) {
-    tsPanel.classList.remove('open');
-    tsBtn.classList.remove('open');
-    tsBtn.setAttribute('aria-expanded','false');
-  }
-});
-document.addEventListener('keydown', e => { if (e.key==='Escape') { tsPanel.classList.remove('open'); tsBtn.classList.remove('open'); tsBtn.setAttribute('aria-expanded','false'); } });
-
-// --- Init ---
-renderThemes();
-renderFonts();
-initPickers();
-// Apply default font (Poppins) on load
-applyFont(TS_FONTS.find(f => f.id === tsActiveFont));
-</script>
 </body>
 </html>
