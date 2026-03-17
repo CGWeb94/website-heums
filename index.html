@@ -33,6 +33,8 @@
       --muted:            #8099b0;
       --subtle:           #4d6a82;
       --r-sm: 8px;  --r-md: 14px;  --r-lg: 22px;  --r-xl: 32px;
+      --nav-scrolled-bg: rgba(11,24,37,0.92);
+      --noise-opacity: 0.5;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -40,7 +42,7 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Inter', sans-serif;
+      font-family: 'Poppins', sans-serif;
       font-size: 16px;
       line-height: 1.7;
       overflow-x: hidden;
@@ -58,11 +60,11 @@
       content: '';
       position: fixed; inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none; z-index: 9999; opacity: 0.5;
+      pointer-events: none; z-index: 9999; opacity: var(--noise-opacity);
     }
 
     /* === LAYOUT === */
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+    .container { max-width: 1450px; margin: 0 auto; padding: 0 32px; }
 
     /* === BADGE === */
     .badge {
@@ -80,7 +82,7 @@
       display: inline-flex; align-items: center; gap: 9px;
       padding: 13px 26px;
       border-radius: var(--r-sm);
-      font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500;
+      font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 500;
       cursor: pointer; border: none;
       transition: transform 0.18s cubic-bezier(.34,1.56,.64,1),
                   box-shadow 0.18s ease, background 0.15s ease;
@@ -100,7 +102,7 @@
     }
     .btn-outline {
       background: transparent; color: var(--text);
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid var(--border);
       box-shadow: 0 2px 10px rgba(0,0,0,0.2);
     }
     .btn-outline:hover { border-color: rgba(255,255,255,0.22); background: var(--surface); }
@@ -111,13 +113,13 @@
       transition: background 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease;
     }
     #nav.scrolled {
-      background: rgba(11,24,37,0.88);
+      background: var(--nav-scrolled-bg);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
-      box-shadow: 0 1px 0 var(--border), 0 6px 28px rgba(0,0,0,0.35);
+      box-shadow: 0 1px 0 var(--border), 0 6px 28px rgba(0,0,0,0.2);
     }
     .nav-inner {
-      max-width: 1200px; margin: 0 auto; padding: 0 28px;
+      max-width: 1450px; margin: 0 auto; padding: 0 32px;
       height: 70px; display: flex; align-items: center; justify-content: space-between;
     }
     .nav-logo {
@@ -290,7 +292,7 @@
     .svc-tab {
       display: flex; align-items: center; gap: 8px;
       padding: 11px 22px; border-radius: calc(var(--r-lg) - 4px);
-      font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500;
+      font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 500;
       color: var(--muted); background: none; border: none; cursor: pointer;
       transition: color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
     }
@@ -475,7 +477,7 @@
     .fg input, .fg select, .fg textarea {
       width: 100%; background: var(--surface-el);
       border: 1px solid var(--border); border-radius: var(--r-sm);
-      padding: 12px 15px; font-family: 'Inter', sans-serif;
+      padding: 12px 15px; font-family: 'Poppins', sans-serif;
       font-size: 14px; color: var(--text); outline: none;
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
@@ -540,7 +542,7 @@
       .ct-form-wrap { padding: 26px 18px; }
     }
   /* === DESIGN SWITCHER (temporär – zum Testen) === */
-  #ts-wrap { position:fixed; bottom:24px; right:24px; z-index:9999; font-family:'Inter',sans-serif; }
+  #ts-wrap { position:fixed; bottom:24px; right:24px; z-index:9999; font-family:'Poppins',sans-serif; }
 
   #ts-btn {
     width:46px; height:46px; border-radius:50%; border:none; cursor:pointer;
@@ -842,8 +844,8 @@
           <a href="#contact" class="btn btn-primary">Heizung anfragen</a>
         </div>
         <div><div class="svc-img-frame">
-          <img src="content/company_images/shutterstock_2250500403.jpg"
-               alt="Techniker bei Wärmepumpeninstallation" loading="lazy">
+          <img src="content/company_images/shutterstock_2526926309.jpg"
+               alt="Monteur installiert Heizkörper" loading="lazy">
         </div></div>
       </div>
 
@@ -864,8 +866,8 @@
           <a href="#contact" class="btn btn-primary">Sicherheit anfragen</a>
         </div>
         <div><div class="svc-img-frame">
-          <img src="content/company_images/shutterstock_2640611055.jpg"
-               alt="Techniker bei Klima- und Gebäudetechnik" loading="lazy">
+          <img src="content/company_images/shutterstock_2627096853(1).jpg"
+               alt="Techniker bei Gebäude- und Klimatechnikinstallation" loading="lazy">
         </div></div>
       </div>
 
@@ -1396,12 +1398,18 @@ const TS_THEMES = [
   { id:'signal-red',    name:'Signalrot',     bg:'#0e1520', surface:'#141d2d', surfaceEl:'#1a2540', border:'rgba(255,255,255,0.07)', accent:'#dc2626', text:'#f0eee8', muted:'#8098b0', subtle:'#4d6280' },
   { id:'olive-gold',    name:'Oliv',          bg:'#141208', surface:'#1c1a0e', surfaceEl:'#242215', border:'rgba(255,255,255,0.07)', accent:'#d4a227', text:'#f0edda', muted:'#909060', subtle:'#606040' },
   { id:'warm-grey',     name:'Warmgrau',      bg:'#16141a', surface:'#201e26', surfaceEl:'#282634', border:'rgba(255,255,255,0.07)', accent:'#f0a444', text:'#ede8e0', muted:'#888898', subtle:'#5a5870' },
+  // — Helle Themes —
+  { id:'weiss-navy',    name:'Weiß + Navy',   bg:'#ffffff', surface:'#f4f7fb', surfaceEl:'#e6eef8', border:'rgba(0,0,0,0.09)',       accent:'#1e3a5f', text:'#1a2535', muted:'#5a6a7a', subtle:'#8a9aaa' },
+  { id:'eisblau',       name:'Eisblau',        bg:'#edf3fa', surface:'#dae8f5', surfaceEl:'#c6d8ed', border:'rgba(0,0,0,0.08)',       accent:'#1a5fa0', text:'#0d2540', muted:'#4a6880', subtle:'#7a9ab0' },
+  { id:'zement-blau',   name:'Zement + Blau', bg:'#f2f2f0', surface:'#e8e8e4', surfaceEl:'#dcdcd6', border:'rgba(0,0,0,0.09)',       accent:'#2c5282', text:'#1a1a1a', muted:'#606060', subtle:'#909090' },
+  { id:'weiss-orange',  name:'Weiß + Orange', bg:'#ffffff', surface:'#fdf6f0', surfaceEl:'#faeadb', border:'rgba(0,0,0,0.07)',       accent:'#e07832', text:'#1a1510', muted:'#6a5040', subtle:'#9a8070' },
+  { id:'silber-blau',   name:'Silber + Blau', bg:'#f0f4f8', surface:'#e2eaf4', surfaceEl:'#d2dfe9', border:'rgba(0,0,0,0.08)',       accent:'#3b6cb0', text:'#1a2535', muted:'#5a6a80', subtle:'#8a9ab0' },
 ];
 
 // --- Font data (10 pairs) ---
 const TS_FONTS = [
-  { id:'inter',         body:"'Inter',sans-serif",            head:"'Playfair Display',serif",    bodyName:'Inter',          headName:'Playfair Display', tag:'Standard' },
-  { id:'poppins',       body:"'Poppins',sans-serif",          head:"'Playfair Display',serif",    bodyName:'Poppins',        headName:'Playfair Display', tag:'Beliebt' },
+  { id:'poppins',       body:"'Poppins',sans-serif",          head:"'Playfair Display',serif",    bodyName:'Poppins',        headName:'Playfair Display', tag:'Standard' },
+  { id:'inter',         body:"'Inter',sans-serif",            head:"'Playfair Display',serif",    bodyName:'Inter',          headName:'Playfair Display', tag:'' },
   { id:'dm-sans',       body:"'DM Sans',sans-serif",          head:"'Fraunces',serif",            bodyName:'DM Sans',        headName:'Fraunces',         tag:'' },
   { id:'jakarta',       body:"'Plus Jakarta Sans',sans-serif",head:"'Cormorant Garamond',serif",  bodyName:'Plus Jakarta',   headName:'Cormorant',        tag:'' },
   { id:'nunito',        body:"'Nunito',sans-serif",           head:"'Libre Baskerville',serif",   bodyName:'Nunito',         headName:'Libre Baskerville',tag:'' },
@@ -1413,7 +1421,7 @@ const TS_FONTS = [
 ];
 
 let tsActiveTheme = 'navy-orange';
-let tsActiveFont  = 'inter';
+let tsActiveFont  = 'poppins';
 
 // --- Apply theme ---
 function applyTheme(t, skipSwatchUpdate) {
@@ -1437,6 +1445,12 @@ function applyTheme(t, skipSwatchUpdate) {
   root.style.setProperty('--c-primary-light', lighten(t.accent, 0.3));
   root.style.setProperty('--c-primary-d1',    darken(t.accent, 0.15));
   root.style.setProperty('--c-primary-d2',    darken(t.accent, 0.32));
+  // Nav + noise adapt to light/dark theme
+  const bgHex = t.bg.startsWith('rgba') ? '#0b1825' : t.bg;
+  const [bgr,bgg,bgb] = hexToRgb(bgHex);
+  const luminance = (0.299*bgr + 0.587*bgg + 0.114*bgb) / 255;
+  root.style.setProperty('--nav-scrolled-bg', `rgba(${bgr},${bgg},${bgb},0.93)`);
+  root.style.setProperty('--noise-opacity',   luminance > 0.65 ? '0.15' : '0.5');
 
   tsActiveTheme = t.id;
   if (!skipSwatchUpdate) {
@@ -1564,6 +1578,8 @@ document.addEventListener('keydown', e => { if (e.key==='Escape') { tsPanel.clas
 renderThemes();
 renderFonts();
 initPickers();
+// Apply default font (Poppins) on load
+applyFont(TS_FONTS.find(f => f.id === tsActiveFont));
 </script>
 </body>
 </html>
